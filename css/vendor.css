@@ -1,0 +1,409 @@
+/* ===================================================================
+ *
+ *  Glint v2.3.0 Vendor/Third Party CSS
+ *  12-29-2025
+ *  ------------------------------------------------------------------
+ *
+ *  TOC:
+ *  # scroll animations (native Intersection Observer)
+ *  # photoswipe
+ *
+ * =================================================================== */
+
+
+/* ===================================================================
+ * # scroll animations (native CSS + Intersection Observer)
+ * Replaces AOS.js with native browser APIs
+ *
+ * ------------------------------------------------------------------- */
+
+/* Base animation styles - elements start hidden/transformed */
+[data-animate] {
+    opacity: 0;
+    transition: opacity 0.6s cubic-bezier(0.47, 0, 0.745, 0.715),
+                transform 0.6s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition-delay: 0.3s;
+}
+
+/* Fade up animation */
+[data-animate="fade-up"] {
+    transform: translateY(50px);
+}
+
+/* Animated state - applied via JavaScript Intersection Observer */
+[data-animate].is-visible {
+    opacity: 1;
+    transform: translate(0);
+}
+
+/* Disable animations on mobile for performance */
+@media (prefers-reduced-motion: reduce) {
+    [data-animate] {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+
+
+/* ===================================================================
+ * # photoswipe 5.x
+ *   PhotoSwipe CSS by Dmytro Semenov | photoswipe.com | MIT license
+ *
+ * ------------------------------------------------------------------- */
+/*! PhotoSwipe main CSS by Dmytro Semenov | photoswipe.com */
+
+.pswp {
+  --pswp-bg: #000;
+  --pswp-placeholder-bg: #222;
+  --pswp-root-z-index: 100000;
+  --pswp-preloader-color: rgba(79, 79, 79, 0.4);
+  --pswp-preloader-color-secondary: rgba(255, 255, 255, 0.9);
+  --pswp-icon-color: #fff;
+  --pswp-icon-color-secondary: #4f4f4f;
+  --pswp-icon-stroke-color: #4f4f4f;
+  --pswp-icon-stroke-width: 2px;
+  --pswp-error-text-color: var(--pswp-icon-color);
+}
+
+.pswp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--pswp-root-z-index);
+  display: none;
+  touch-action: none;
+  outline: 0;
+  opacity: 0.003;
+  contain: layout style size;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.pswp--open {
+  display: block;
+}
+
+.pswp--zoom-allowed .pswp__img {
+  cursor: zoom-in;
+}
+
+.pswp--zoomed-in .pswp__img {
+  cursor: grab;
+}
+
+.pswp--dragging .pswp__img {
+  cursor: grabbing;
+}
+
+.pswp--click-to-zoom.pswp--zoom-allowed .pswp__img {
+  cursor: zoom-in;
+}
+
+.pswp--click-to-zoom.pswp--zoomed-in .pswp__img {
+  cursor: zoom-out;
+}
+
+.pswp__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--pswp-bg);
+  opacity: 0.003;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.pswp__scroll-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pswp__container,
+.pswp__img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.pswp__container,
+.pswp__zoom-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.pswp__zoom-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+.pswp__img,
+.pswp__zoom-wrap {
+  will-change: transform;
+}
+
+.pswp__img {
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.pswp__hidden {
+  display: none !important;
+}
+
+.pswp__content > picture,
+.pswp__content > img {
+  display: block;
+}
+
+.pswp__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pswp__error-msg-container {
+  display: grid;
+}
+
+.pswp__error-msg {
+  margin: auto;
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--pswp-error-text-color);
+}
+
+.pswp__counter {
+  height: 30px;
+  margin-top: 15px;
+  margin-inline-start: 20px;
+  font-size: 14px;
+  line-height: 30px;
+  color: var(--pswp-icon-color);
+  text-shadow: 1px 1px 3px var(--pswp-icon-color-secondary);
+  opacity: 0.85;
+}
+
+.pswp__top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  z-index: 10;
+  pointer-events: none !important;
+}
+
+.pswp__top-bar > * {
+  pointer-events: auto;
+  will-change: opacity;
+}
+
+.pswp__button {
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 60px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  opacity: 0.85;
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+}
+
+.pswp__button:hover,
+.pswp__button:active,
+.pswp__button:focus {
+  transition: none;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.pswp__button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+}
+
+.pswp__button--hidden {
+  display: none !important;
+}
+
+.pswp__icn {
+  fill: var(--pswp-icon-color);
+  color: var(--pswp-icon-color-secondary);
+}
+
+.pswp__icn {
+  position: absolute;
+  top: 14px;
+  left: 9px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.pswp__icn-shadow {
+  stroke: var(--pswp-icon-stroke-color);
+  stroke-width: var(--pswp-icon-stroke-width);
+  fill: none;
+}
+
+.pswp__icn:focus {
+  outline: 0;
+}
+
+.pswp__button--arrow {
+  position: absolute;
+  top: 0;
+  width: 75px;
+  height: 100px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.pswp__button--arrow:disabled {
+  display: none;
+  cursor: default;
+}
+
+.pswp__button--arrow .pswp__icn {
+  top: 50%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  background: none;
+  border-radius: 0;
+}
+
+.pswp__button--arrow--prev {
+  right: auto;
+  left: 0;
+}
+
+.pswp__button--arrow--prev .pswp__icn {
+  left: 20px;
+  right: auto;
+}
+
+.pswp__button--arrow--next {
+  right: 0;
+}
+
+.pswp__button--arrow--next .pswp__icn {
+  left: auto;
+  right: 20px;
+}
+
+.pswp__button--close {
+  margin-inline-end: 6px;
+}
+
+.pswp__button--zoom {
+  display: none;
+}
+
+.pswp--one-slide .pswp__button--arrow {
+  display: none;
+}
+
+.pswp--click-to-zoom .pswp__button--zoom {
+  display: block;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom .pswp__icn--zoom-in {
+  display: block;
+}
+
+.pswp--zoom-allowed .pswp__button--zoom .pswp__icn--zoom-out {
+  display: none;
+}
+
+.pswp--zoomed-in .pswp__button--zoom .pswp__icn--zoom-in {
+  display: none;
+}
+
+.pswp--zoomed-in .pswp__button--zoom .pswp__icn--zoom-out {
+  display: block;
+}
+
+.pswp__preloader {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 60px;
+  margin-inline-end: auto;
+}
+
+.pswp__preloader .pswp__icn {
+  opacity: 0;
+  transition: opacity 0.2s linear;
+  animation: pswp-clockwise 600ms linear infinite;
+}
+
+.pswp__preloader--active .pswp__icn {
+  opacity: 0.85;
+}
+
+@keyframes pswp-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Caption styles */
+.pswp__caption__center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px 70px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  text-align: center;
+  color: #fff;
+}
+
+.pswp__caption__center h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.pswp__caption__center p {
+  margin: 0;
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.8);
+}

@@ -1,0 +1,78 @@
+/* ===================================================================
+ * fonts.scss
+ *
+ * ------------------------------------------------------------------- */
+
+
+/*
+ * lora
+================================================================================ */
+@font-face {
+    font-family: "lora-regular";
+    src: url("../fonts/lora/lora-regular-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "lora-italic";
+    src: url("../fonts/lora/lora-italic-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "lora-bold";
+    src: url("../fonts/lora/lora-bold-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+/*
+ * montserrat
+================================================================================ */
+
+@font-face {
+    font-family: "montserrat-bold";
+    src: url("../fonts/montserrat/montserrat-bold-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "montserrat-semibold";
+    src: url("../fonts/montserrat/montserrat-semibold-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "montserrat-medium";
+    src: url("../fonts/montserrat/montserrat-medium-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "montserrat-regular";
+    src: url("../fonts/montserrat/montserrat-regular-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "montserrat-light";
+    src: url("../fonts/montserrat/montserrat-light-webfont.woff2") format("woff2");
+    font-style: normal;
+    font-weight: normal;
+    font-display: swap;
+}
+
+/*# sourceMappingURL=fonts.css.map */

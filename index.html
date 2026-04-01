@@ -308,11 +308,12 @@
                     <i class="icon-earth"></i>
                 </div>
                 <div class="service-text">
-                    <h3 class="h2"><a href="#" target="_blank" style="color: inherit;">SRAMS</a></h3>
+                    <h3 class="h2" style="color: inherit;">SRAMS</h3>
                     <p>School Result Archive and Management System. An operational hub for tracking, managing, and
                         distributing student academic records securely primarily for secondary school and in the future
                         for higher educational institutions.
                     </p>
+                    <a href="#0" class="btn btn--stroke" style="margin-top:1rem; opacity: 0.6; cursor: default;">Coming Soon</a>
                 </div>
             </div>
 
@@ -451,6 +452,10 @@
                                 const loadAnim = animate(btn, { opacity: [1, 0.3, 1] }, { duration: 1.2, repeat: Infinity, ease: "easeInOut" });
 
                                 try {
+                                    // Convert generic FormData into strict JSON so Namecheap's ModSecurity WAF doesn't block cross-origin payloads
+                                    const formData = new FormData(activeForm);
+                                    const jsonPayload = Object.fromEntries(formData.entries());
+                                    
                                     // Submit POST request to our robust Laravel Headless Backend
                                     const devMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
                                     const API_URL = devMode 
@@ -459,9 +464,10 @@
                                     
                                     const response = await fetch(API_URL, {
                                         method: 'POST',
-                                        body: formData,
+                                        body: JSON.stringify(jsonPayload),
                                         headers: {
-                                            'Accept': 'application/json'
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json'
                                         }
                                     });
 

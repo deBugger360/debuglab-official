@@ -386,49 +386,115 @@
 
                 <h3 class="h6">Start a conversation</h3>
 
-                <form name="contactForm" id="contactForm" method="post" action="" novalidate>
+                <form name="contactForm" id="contactForm" action="" novalidate>
                     <fieldset>
-
                         <div class="form-field">
                             <input name="contactName" type="text" id="contactName" placeholder="Your Name" value=""
-                                minlength="2" required="" aria-required="true" class="full-width">
+                                minlength="2" required aria-required="true" class="full-width">
                         </div>
                         <div class="form-field">
                             <input name="contactEmail" type="email" id="contactEmail" placeholder="Your Email" value=""
-                                required="" aria-required="true" class="full-width">
+                                required aria-required="true" class="full-width">
                         </div>
                         <div class="form-field">
-                            <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value=""
-                                class="full-width">
+                            <textarea name="contactDetails" id="contactDetails" placeholder="Project Details" rows="10"
+                                cols="50" minlength="10" required aria-required="true" class="full-width"></textarea>
                         </div>
                         <div class="form-field">
-                            <textarea name="contactMessage" id="contactMessage" placeholder="Your Message" rows="10"
-                                cols="50" required="" aria-required="true" class="full-width"></textarea>
+                            <button id="btnSubmit" type="submit" class="full-width btn--primary" style="transition: none;">Send message</button>
                         </div>
-                        <div class="form-field">
-                            <button class="full-width btn--primary">Send message</button>
-                            <div class="submit-loader">
-                                <div class="text-loader">Sending...</div>
-                                <div class="s-loader">
-                                    <div class="bounce1"></div>
-                                    <div class="bounce2"></div>
-                                    <div class="bounce3"></div>
-                                </div>
-                            </div>
-                        </div>
-
                     </fieldset>
                 </form>
 
                 <!-- contact-warning -->
-                <div class="message-warning">
-                    Something went wrong. Please try again.
+                <div class="message-warning" id="contactWarning">
+                    Operational Pressure: Our backend is currently unreachable.
                 </div>
 
                 <!-- contact-success -->
-                <div class="message-success">
-                    Your message was sent, thank you!<br>
+                <div class="message-success" id="contactSuccess">
+                    Lead securely captured for operational follow-up.<br>
                 </div>
+
+                <!-- Submission State via Vanilla Framer Motion -->
+                <script type="module">
+                    import { animate } from "https://esm.sh/motion";
+
+                    // Delay gracefully to strip main.js standard handlers ensuring our strict pipeline controls
+                    document.addEventListener('DOMContentLoaded', () => {
+                        setTimeout(() => {
+                            const originalForm = document.getElementById('contactForm');
+                            if (!originalForm) return;
+                            
+                            const clonedForm = originalForm.cloneNode(true);
+                            originalForm.parentNode.replaceChild(clonedForm, originalForm);
+
+                            const activeForm = document.getElementById('contactForm');
+                            const btn = document.getElementById('btnSubmit');
+                            const warning = document.getElementById('contactWarning');
+                            const success = document.getElementById('contactSuccess');
+
+                            activeForm.addEventListener('submit', async (e) => {
+                                e.preventDefault();
+                                success.classList.remove('is-visible');
+                                warning.classList.remove('is-visible');
+
+                                // 1. Strict Client-Side validation execution
+                                if (!activeForm.checkValidity()) {
+                                    activeForm.reportValidity();
+                                    return;
+                                }
+
+                                // 2. Framer Motion Submission clear 'Sending...' visual state to block multiples
+                                btn.disabled = true;
+                                btn.textContent = 'Sending...';
+                                const loadAnim = animate(btn, { opacity: [1, 0.3, 1] }, { duration: 1.2, repeat: Infinity, ease: "easeInOut" });
+
+                                try {
+                                    // Submit POST request to our robust Laravel Headless Backend
+                                    const devMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+                                    const API_URL = devMode 
+                                        ? 'http://127.0.0.1:8000/api/contact-lead'
+                                        : 'https://mediadmin.debuglabdigital.com/api/contact-lead';
+                                    
+                                    const response = await fetch(API_URL, {
+                                        method: 'POST',
+                                        body: formData,
+                                        headers: {
+                                            'Accept': 'application/json'
+                                        }
+                                    });
+
+                                    if (!response.ok) {
+                                        throw new Error('Unreachable Backend');
+                                    }
+
+                                    const data = await response.json();
+                                    
+                                    if (data.status === 'success') {
+                                        // 3. Success Feedback captured correctly
+                                        success.textContent = data.message || "Lead securely captured for operational follow-up by the Debug Lab team.";
+                                        success.classList.add('is-visible');
+                                        activeForm.reset();
+                                    } else {
+                                        warning.textContent = data.message || "Validation Error.";
+                                        warning.classList.add('is-visible');
+                                    }
+                                } catch (error) {
+                                    // 4. 'Operational Pressure' specific error formatting
+                                    warning.innerHTML = "<strong>Operational Pressure:</strong> Our systems are experiencing heavy constraints and the backend is unreachable. We engineer to avoid this, but right now we're under pressure. Please email us directly.";
+                                    warning.classList.add('is-visible');
+                                } finally {
+                                    // Clear animations robustly
+                                    loadAnim.stop();
+                                    animate(btn, { opacity: 1 }, { duration: 0.3 });
+                                    btn.disabled = false;
+                                    btn.textContent = 'Send message';
+                                }
+                            });
+                        }, 500); 
+                    });
+                </script>
 
             </div> <!-- end contact-primary -->
 

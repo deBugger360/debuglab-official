@@ -555,8 +555,8 @@
                 <p>Debug Lab turns complexity into clarity — by breaking problems down, engineering resilient systems,
                     and rebuilding them cleanly for long-term use in real operational environments.</p>
 
-                <p style="margin-top: 1.5rem;">
-                    <strong>Owned Platform:</strong> <a href="https://mediadmin.debuglabdigital.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Media Admin</a>
+                <p style="margin-top: 1.5rem; font-size: 1.4rem; color: rgba(255,255,255,0.7);">
+                    <strong style="color: #ffffff;">Parent company of</strong> <a href="https://mediadmin.debuglabdigital.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; transition: color 0.3s ease;">Media Admin</a>
                 </p>
 
             </div>
@@ -617,6 +617,69 @@
     ================================================== -->
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Framer Motion Refinements -->
+    <script type="module">
+        import { animate, inView, hover, stagger } from "https://esm.sh/motion";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Delay slightly to ensure main.js has processed DOM elements
+            setTimeout(() => {
+                // Button Hover States (Lift and Glow)
+                const primaryBtn = document.querySelector('.home-content__buttons .btn--primary');
+                const secondaryBtn = document.querySelector('.home-content__buttons .btn--stroke');
+
+                if (primaryBtn) {
+                    hover(primaryBtn, (element) => {
+                        animate(element, { y: -3, boxShadow: "0px 10px 25px rgba(255, 255, 255, 0.2)" }, { duration: 0.3, ease: "easeOut" });
+                        return () => animate(element, { y: 0, boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)" }, { duration: 0.3, ease: "easeIn" });
+                    });
+                }
+
+                if (secondaryBtn) {
+                    hover(secondaryBtn, (element) => {
+                        animate(element, { y: -3, boxShadow: "0px 10px 25px rgba(255, 255, 255, 0.1)" }, { duration: 0.3, ease: "easeOut" });
+                        return () => animate(element, { y: 0, boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)" }, { duration: 0.3, ease: "easeIn" });
+                    });
+                }
+
+                // Section Reveals (Staggered whileInView)
+                const servicesGrid = document.querySelector("#services .services-list");
+                if (servicesGrid) {
+                    const items = servicesGrid.querySelectorAll(".service-item");
+                    items.forEach(el => {
+                        el.style.opacity = "0";
+                        el.style.transform = "translateY(50px)";
+                    });
+                    
+                    inView(servicesGrid, () => {
+                        animate(
+                            items,
+                            { opacity: [0, 1], y: [50, 0] },
+                            { delay: stagger(0.15), duration: 0.8, easing: "easeOut" }
+                        );
+                    }, { margin: "-50px" });
+                }
+
+                const partnersGrid = document.querySelector("#partners .partners-grid");
+                if (partnersGrid) {
+                    const items = partnersGrid.querySelectorAll(".partner-card");
+                    items.forEach(el => {
+                        el.style.opacity = "0";
+                        el.style.transform = "translateY(50px)";
+                    });
+
+                    inView(partnersGrid, () => {
+                        animate(
+                            items,
+                            { opacity: [0, 1], y: [50, 0] },
+                            { delay: stagger(0.15), duration: 0.8, easing: "easeOut" }
+                        );
+                    }, { margin: "-50px" });
+                }
+            }, 100);
+        });
+    </script>
 
 </body>
 

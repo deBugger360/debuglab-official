@@ -493,11 +493,11 @@ body {
 
 .aww-input {
     width: 100%;
-    background: transparent;
+    background: transparent !important;
     border: 0;
     border-bottom: 1px solid var(--border);
     padding: 1.6rem 0;
-    color: var(--text-hi);
+    color: var(--white) !important;
     font-family: var(--font-serif);
     font-size: 1.6rem;
     line-height: 1.5;
@@ -505,6 +505,7 @@ body {
     margin-bottom: 2.8rem;
     transition: border-color var(--ease-out) 0.3s;
     box-sizing: border-box;
+    -webkit-text-fill-color: var(--white) !important; /* overrides aggressive Chrome autocompletes temporarily */
 }
 
 .aww-input:focus {

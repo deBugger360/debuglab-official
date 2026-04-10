@@ -310,25 +310,25 @@
     };
 
 
-   /* Newsletter Subscription (Mailchimp)
-    * Native fetch with JSONP fallback for CORS
+   /* Newsletter Subscription (Laravel API)
     * ------------------------------------------------------ */
     var clMailchimpSubscribe = function() {
 
         var form = document.getElementById('mc-form');
         var messageEl = form ? form.querySelector('.subscribe-message') : null;
+        var submitBtn = form ? form.querySelector('input[type="submit"]') : null;
 
-        if (!form || !messageEl) return;
+        if (!form || !messageEl || !submitBtn) return;
 
         // Response messages
         var messages = {
             submitting: 'Submitting...',
-            success: '<i class="fa-solid fa-check"></i> We have sent you a confirmation email',
-            error: '<i class="fa-solid fa-triangle-exclamation"></i> E-mail address is not valid.',
+            success: '<i class="fa-solid fa-check"></i> Thanks! You are on the waitlist.',
+            error: '<i class="fa-solid fa-triangle-exclamation"></i> Network error. Please try again later.',
             invalidEmail: '<i class="fa-solid fa-triangle-exclamation"></i> Please enter a valid e-mail address.'
         };
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             var emailInput = form.querySelector('input[type="email"]');
@@ -336,49 +336,51 @@
 
             // Basic email validation
             if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                messageEl.style.color = '#ff6163';
                 messageEl.innerHTML = messages.invalidEmail;
                 return;
             }
 
+            messageEl.style.color = '#26A69A';
             messageEl.innerHTML = messages.submitting;
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.5';
 
-            // Convert POST URL to JSONP-compatible GET URL
-            // Mailchimp requires JSONP for cross-origin requests
-            var url = cfg.mailChimpURL.replace('/post?', '/post-json?');
-            url += '&EMAIL=' + encodeURIComponent(email);
+            try {
+                var payload = { email: email };
+                var isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname) || window.location.protocol === 'file:';
+                var endpoint = isLocal ? 'http://127.0.0.1:8000/api/newsletter-waitlist' : 'https://mediadmin.debuglabdigital.com/api/newsletter-waitlist';
 
-            // Create unique callback name
-            var callbackName = 'mailchimpCallback_' + Date.now();
+                var response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
 
-            // Create JSONP script
-            var script = document.createElement('script');
-            script.src = url + '&c=' + callbackName;
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
 
-            // Set up callback
-            window[callbackName] = function(response) {
-                // Clean up
-                delete window[callbackName];
-                document.body.removeChild(script);
+                var data = await response.json();
 
-                if (response.result === 'success') {
+                if (data.status === 'success') {
+                    messageEl.style.color = '#26A69A';
                     messageEl.innerHTML = messages.success;
                     emailInput.value = '';
                 } else {
-                    // Parse Mailchimp error message
-                    var errorMsg = response.msg || '';
-                    // Remove the "0 - " prefix Mailchimp sometimes adds
-                    errorMsg = errorMsg.replace(/^0 - /, '');
-                    messageEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + errorMsg;
+                    messageEl.style.color = '#ff6163';
+                    messageEl.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> ' + (data.message || 'Error subscribing.');
                 }
-            };
-
-            // Handle script load errors
-            script.onerror = function() {
-                delete window[callbackName];
+            } catch (err) {
+                messageEl.style.color = '#ff6163';
                 messageEl.innerHTML = messages.error;
-            };
-
-            document.body.appendChild(script);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
         });
 
     };

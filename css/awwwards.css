@@ -1,0 +1,443 @@
+/* AWWWARDS/APPLE LEVEL OVERRIDES */
+:root {
+    --aww-bg: #030303;
+    --aww-bg-card: #0c0c0c;
+    --aww-text: #888888;
+    --aww-text-bright: #ffffff;
+    --aww-border: rgba(255, 255, 255, 0.08);
+    --aww-primary: #26A69A;
+    --aww-font: "Inter", sans-serif;
+    --aww-max-width: 1200px;
+}
+
+body {
+    background-color: var(--aww-bg) !important;
+    color: var(--aww-text) !important;
+    font-family: var(--aww-font) !important;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.aww-container {
+    max-width: var(--aww-max-width);
+    margin: 0 auto;
+    padding: 0 4%;
+}
+
+/* Glassmorphic Header */
+.aww-header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: rgba(3, 3, 3, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--aww-border);
+    height: 72px;
+    display: flex;
+    align-items: center;
+}
+
+.aww-header__inner {
+    width: 100%;
+    max-width: var(--aww-max-width);
+    margin: 0 auto;
+    padding: 0 4%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.aww-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.aww-nav a {
+    color: #a0a0a0;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+    letter-spacing: -0.01em;
+}
+
+.aww-nav a:hover {
+    color: var(--aww-text-bright);
+}
+
+.aww-btn-pill {
+    background: var(--aww-text-bright);
+    color: #000;
+    border-radius: 40px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    letter-spacing: -0.01em;
+}
+.aww-btn-pill:hover {
+    transform: scale(1.02);
+    color: #000;
+    background: #e0e0e0;
+}
+.aww-btn-pill--dark {
+    background: transparent;
+    color: var(--aww-text-bright);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.aww-btn-pill--dark:hover {
+    color: var(--aww-text-bright);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Hero Section */
+.aww-hero {
+    position: relative;
+    padding: 220px 0 100px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--aww-border);
+    background-image: url("../images/hero-one.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 1;
+}
+
+.aww-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(3,3,3,0.7) 0%, rgba(3,3,3,0.95) 100%);
+    z-index: -2;
+}
+
+.aww-hero__glow {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(38, 166, 154, 0.15) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.aww-badge {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    color: #888888;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+.aww-h1 {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 1.05;
+    color: var(--aww-text-bright);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    margin-bottom: 32px;
+    max-width: 900px;
+}
+
+.aww-hero__desc {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--aww-text);
+    max-width: 580px;
+    margin-bottom: 40px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+}
+
+.aww-hero__buttons {
+    display: flex;
+    gap: 16px;
+}
+.aww-hero__buttons .aww-btn-pill {
+    padding: 14px 28px;
+    font-size: 15px;
+}
+
+/* Brand Grid (Used By / Reality Check Grid) */
+.aww-brands {
+    border-bottom: 1px solid var(--aww-border);
+}
+.aww-brands-header {
+    text-align: center;
+    padding: 60px 0;
+    border-bottom: 1px solid var(--aww-border);
+    font-size: 14px;
+    color: var(--aww-text-bright);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+.aww-brand-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.aww-brand-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    border-right: 1px solid var(--aww-border);
+    border-bottom: 1px solid var(--aww-border);
+    color: var(--aww-text-bright);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+.aww-brand-item:hover {
+    opacity: 1;
+}
+.aww-brand-item:nth-child(4n) {
+    border-right: none;
+}
+/* last row items don't need border-bottom if we are clever, but let's just border-bottom them all and let the container seal it or just trust it. */
+
+@media (max-width: 768px) {
+    .aww-brand-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .aww-brand-item:nth-child(2n) {
+        border-right: none;
+    }
+    .aww-brand-item:nth-child(4n) {
+        border-right: none;
+    }
+}
+
+/* Grid & Cards (Apple/Awwwards style borders) */
+.aww-section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--aww-border);
+    position: relative;
+    z-index: 1;
+}
+
+.aww-section--intrigue {
+    background-image: url("../images/nano-banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.aww-section--intrigue::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(3,3,3,0.9) 0%, rgba(3,3,3,1) 100%);
+    z-index: -1;
+}
+
+.aww-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.aww-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+/* Stats */
+.aww-stats {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+.aww-stat h4 {
+    font-size: 32px;
+    color: var(--aww-text-bright);
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.03em;
+}
+.aww-stat p {
+    font-size: 14px;
+    color: var(--aww-text);
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .aww-grid-2, .aww-grid-3 { grid-template-columns: 1fr; }
+    .hide-on-mobile { display: none; }
+    .aww-stats { flex-direction: column; gap: 30px; }
+}
+
+/* sleek card */
+.aww-card {
+    background: transparent;
+    border: 1px solid var(--aww-border);
+    border-radius: 12px;
+    padding: 40px;
+    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.aww-card:hover {
+    border-color: rgba(255,255,255,0.15);
+    background: linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(5,5,5,0) 100%);
+    text-decoration: none;
+}
+
+/* Card Icons */
+.aww-card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50%;
+    margin-bottom: 32px;
+    color: var(--aww-text-bright);
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.aww-card:hover .aww-card-icon {
+    background: rgba(255,255,255,0.05);
+}
+
+.aww-card h3 {
+    color: var(--aww-text-bright);
+    font-size: 22px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.aww-card p {
+    color: var(--aww-text);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Section Titles */
+.aww-section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--aww-text-bright);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-top: 0;
+    margin-bottom: 16px;
+    max-width: 600px;
+}
+
+.aww-section-subtitle {
+    font-size: 16px;
+    color: var(--aww-text);
+    max-width: 600px;
+    margin-top: 0;
+    margin-bottom: 60px;
+    line-height: 1.6;
+}
+
+/* Contact Area */
+.aww-section--contact {
+    background-image: url("../images/hero-two.jpg");
+    background-size: cover;
+    background-position: center bottom;
+}
+.aww-section--contact::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(3,3,3,0.92);
+    z-index: -1;
+}
+
+.aww-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 100px 0;
+}
+@media (max-width: 768px) {
+    .aww-contact { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.aww-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--aww-border);
+    padding: 16px 0;
+    color: var(--aww-text-bright);
+    font-size: 16px;
+    margin-bottom: 24px;
+    transition: border-color 0.3s;
+    font-family: inherit;
+}
+.aww-input:focus {
+    outline: none;
+    border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+.aww-input::placeholder {
+    color: #444;
+}
+textarea.aww-input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.aww-contact-info h5 {
+    color: var(--aww-text-bright);
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+.aww-contact-info p {
+    color: var(--aww-text);
+    font-size: 15px;
+    margin-top: 0;
+    margin-bottom: 32px;
+}
+
+.aww-footer {
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+}
+@media (max-width: 768px) {
+    .aww-footer { flex-direction: column; gap: 20px; text-align: center; }
+}
+
+.aww-footer a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.aww-footer a:hover {
+    color: var(--aww-text-bright);
+}
+.aww-socials {
+    display: flex;
+    gap: 16px;
+}
+.aww-socials a {
+    font-size: 16px;
+}

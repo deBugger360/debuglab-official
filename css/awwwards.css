@@ -175,6 +175,8 @@ body {
     background: radial-gradient(ellipse at 50% 0%, rgba(38,166,154,0.06) 0%, transparent 60%);
     opacity: 0;
     transition: opacity var(--ease-out) 0.4s;
+    pointer-events: none; /* Do not block clicks to children */
+    z-index: 1;
 }
 
 .aww-card:hover {
@@ -304,6 +306,9 @@ body {
     letter-spacing: 0.14rem;
     color: var(--teal);
     text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
     transition: color var(--ease-out) 0.25s, gap var(--ease-out) 0.25s;
     border-top: 1px solid rgba(255,255,255,0.06);
 }

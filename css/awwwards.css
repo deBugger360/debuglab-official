@@ -230,6 +230,99 @@ body {
     .aww-cards-2 { grid-template-columns: 1fr; }
 }
 
+/* Product card variant — flex column so button sticks to bottom */
+.aww-card--product {
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+}
+
+.aww-card--product:hover {
+    transform: translateY(-6px);
+    border-color: var(--teal);
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(38,166,154,0.2);
+}
+
+/* Icon + status badge row */
+.aww-card__product-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+}
+
+.aww-card__product-top .aww-card__icon {
+    margin-bottom: 0;
+}
+
+/* Live / Coming Soon status badge */
+.aww-product-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    border-radius: 50px;
+    padding: 0.4rem 1.2rem;
+}
+
+.aww-product-status--live {
+    color: var(--teal);
+    background: rgba(38,166,154,0.1);
+    border: 1px solid rgba(38,166,154,0.25);
+}
+
+.aww-status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.75); }
+}
+
+/* The launch button inside each product card */
+.aww-card__link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-top: auto;
+    padding-top: 2.8rem;
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14rem;
+    color: var(--teal);
+    text-decoration: none;
+    transition: color var(--ease-out) 0.25s, gap var(--ease-out) 0.25s;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.aww-card__link-btn i {
+    font-size: 1rem;
+    transition: transform var(--ease-out) 0.25s;
+}
+
+.aww-card__link-btn:hover {
+    color: var(--white);
+    gap: 1.4rem;
+    text-decoration: none;
+}
+
+.aww-card__link-btn:hover i {
+    transform: translate(3px, -3px);
+}
+
 /* ── "Chip" badge ─────────────────────────────────────────────────── */
 .aww-chip {
     display: inline-block;
@@ -280,13 +373,31 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+/* Section label above the grid */
+.aww-serve-header {
+    text-align: center;
+    padding: 3.6rem 0 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.aww-serve-label {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.28rem;
+    color: var(--teal);
+    display: inline-block;
+    padding-bottom: 2.4rem;
+}
+
 .aww-serve-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
 
 .aww-serve-item {
-    padding: 4.5rem 3rem;
+    padding: 4rem 3rem;
     border-right: 1px solid var(--border);
     text-align: center;
     transition: background var(--ease-out) 0.3s;
@@ -297,7 +408,7 @@ body {
 .aww-serve-item:hover { background: rgba(38,166,154,0.05); }
 
 .aww-serve-item i {
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     color: var(--teal);
     display: block;
     margin-bottom: 1.4rem;
@@ -305,11 +416,22 @@ body {
 
 .aww-serve-item span {
     font-family: var(--font-sans);
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.15rem;
-    color: var(--text-hi);
+    letter-spacing: 0.12rem;
+    color: var(--white);
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.aww-serve-item small {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text);
+    line-height: 1.5;
+    margin-top: 0.4rem;
 }
 
 @media (max-width: 800px) {

@@ -1,443 +1,553 @@
-/* AWWWARDS/APPLE LEVEL OVERRIDES */
-:root {
-    --aww-bg: #030303;
-    --aww-bg-card: #0c0c0c;
-    --aww-text: #888888;
-    --aww-text-bright: #ffffff;
-    --aww-border: rgba(255, 255, 255, 0.08);
-    --aww-primary: #26A69A;
-    --aww-font: "Inter", sans-serif;
-    --aww-max-width: 1200px;
-}
+/* ===================================================================
+ * AWWWARDS UPGRADE — Exact match of about.html color DNA
+ * Primary: #26A69A (teal), BG: #121212/#0f0f0f, Text: rgba(255,255,255,0.6)
+ * ==================================================================== */
 
+/* ── Body & Base ─────────────────────────────────────────────────── */
 body {
-    background-color: var(--aww-bg) !important;
-    color: var(--aww-text) !important;
-    font-family: var(--aww-font) !important;
+    background-color: #0f0f0f;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
-    margin: 0;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
 }
 
-.aww-container {
-    max-width: var(--aww-max-width);
-    margin: 0 auto;
-    padding: 0 4%;
-}
-
-/* Glassmorphic Header */
-.aww-header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 999;
-    background: rgba(3, 3, 3, 0.6);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--aww-border);
-    height: 72px;
-    display: flex;
-    align-items: center;
-}
-
-.aww-header__inner {
-    width: 100%;
-    max-width: var(--aww-max-width);
-    margin: 0 auto;
-    padding: 0 4%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.aww-nav {
-    display: flex;
-    gap: 32px;
-}
-
-.aww-nav a {
-    color: #a0a0a0;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.3s;
-    letter-spacing: -0.01em;
-}
-
-.aww-nav a:hover {
-    color: var(--aww-text-bright);
-}
-
-.aww-btn-pill {
-    background: var(--aww-text-bright);
-    color: #000;
-    border-radius: 40px;
-    padding: 10px 20px;
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.3s ease;
-    display: inline-block;
-    border: none;
-    cursor: pointer;
-    letter-spacing: -0.01em;
-}
-.aww-btn-pill:hover {
-    transform: scale(1.02);
-    color: #000;
-    background: #e0e0e0;
-}
-.aww-btn-pill--dark {
-    background: transparent;
-    color: var(--aww-text-bright);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-.aww-btn-pill--dark:hover {
-    color: var(--aww-text-bright);
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/* Hero Section */
+/* ── Upgraded Hero ─────────────────────────────────────────────────
+   Replaces .s-home with a full-viewport layered hero
+   ──────────────────────────────────────────────────────────────── */
 .aww-hero {
     position: relative;
-    padding: 220px 0 100px;
-    min-height: 80vh;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    background-color: #000;
+    background-image: url("../images/hero-one.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--aww-border);
-    background-image: url("../images/hero-one.jpg");
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    overflow: hidden;
+}
+
+/* Dark cinematic gradient overlay — same depth as about page hero */
+.aww-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(0,0,0,0.6) 50%,
+        rgba(0,0,0,0.85) 100%
+    );
     z-index: 1;
 }
 
-.aww-hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(3,3,3,0.7) 0%, rgba(3,3,3,0.95) 100%);
-    z-index: -2;
-}
-
+/* Teal radial glow — subtle, same vibe as about page */
 .aww-hero__glow {
     position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(38, 166, 154, 0.15) 0%, transparent 70%);
-    z-index: -1;
+    top: 30%;
+    left: 20%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(38,166,154,0.12) 0%, transparent 65%);
+    z-index: 2;
     pointer-events: none;
 }
 
-.aww-badge {
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 11px;
-    color: #888888;
-    margin-bottom: 24px;
-    font-weight: 500;
+.aww-hero__content {
+    position: relative;
+    z-index: 3;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    width: 100%;
+    padding-top: 80px; /* offset for fixed header */
 }
 
-.aww-h1 {
-    font-size: clamp(3.5rem, 7vw, 6rem);
-    line-height: 1.05;
-    color: var(--aww-text-bright);
+/* Eyebrow label — teal, all-caps, letter-spaced (exactly like about) */
+.aww-eyebrow {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: #26A69A;
+    margin-bottom: 2.4rem;
+}
+
+.aww-hero__h1 {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(4rem, 7vw, 7rem);
     font-weight: 500;
-    letter-spacing: -0.04em;
-    margin-bottom: 32px;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 2.8rem 0;
     max-width: 900px;
 }
 
 .aww-hero__desc {
-    font-size: clamp(1.1rem, 2vw, 1.3rem);
-    color: var(--aww-text);
-    max-width: 580px;
-    margin-bottom: 40px;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    margin: 0 0 4rem 0;
 }
 
-.aww-hero__buttons {
+/* Hero buttons — teal primary, ghost secondary */
+.aww-hero__actions {
     display: flex;
-    gap: 16px;
-}
-.aww-hero__buttons .aww-btn-pill {
-    padding: 14px 28px;
-    font-size: 15px;
+    flex-wrap: wrap;
+    gap: 1.6rem;
+    align-items: center;
 }
 
-/* Brand Grid (Used By / Reality Check Grid) */
-.aww-brands {
-    border-bottom: 1px solid var(--aww-border);
+.aww-btn-primary {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    height: 5.4rem;
+    line-height: 5.4rem;
+    padding: 0 3.2rem;
+    color: #ffffff;
+    background: #26A69A;
+    border: 0.2rem solid #26A69A;
+    text-decoration: none;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
-.aww-brands-header {
-    text-align: center;
-    padding: 60px 0;
-    border-bottom: 1px solid var(--aww-border);
-    font-size: 14px;
-    color: var(--aww-text-bright);
+
+.aww-btn-primary:hover,
+.aww-btn-primary:focus {
+    background: #00897B;
+    border-color: #00897B;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.aww-btn-ghost {
+    display: inline-block;
+    font-family: "Inter", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    height: 5.4rem;
+    line-height: calc(5.4rem - 0.4rem);
+    padding: 0 3.2rem;
+    color: #ffffff;
+    background: transparent;
+    border: 0.2rem solid rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.aww-btn-ghost:hover,
+.aww-btn-ghost:focus {
+    border-color: #ffffff;
+    background: rgba(255,255,255,0.05);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ── Scroll Cue ─────────────────────────────────────────────────── */
+.aww-hero__scroll {
+    position: absolute;
+    bottom: 4rem;
+    right: 9.5rem;
+    z-index: 3;
+}
+
+.aww-hero__scroll a {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.3s;
+}
+
+.aww-hero__scroll a:hover { color: #26A69A; }
+.aww-hero__scroll a::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #26A69A);
+    margin-right: 1rem;
+}
+
+/* ── Section Base ───────────────────────────────────────────────── */
+.aww-section {
+    padding: 10rem 0;
+    position: relative;
+}
+
+.aww-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* Section eyebrow */
+.aww-section-tag {
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    color: #26A69A;
+    margin-bottom: 2rem;
+}
+
+/* Section heading */
+.aww-section-h2 {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(3.2rem, 5vw, 5.2rem);
     font-weight: 500;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: #ffffff;
+    margin: 0 0 2rem 0;
 }
-.aww-brand-row {
+
+/* Section body text */
+.aww-section-body {
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.8rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.6);
+    max-width: 680px;
+    margin: 0 0 5rem 0;
+}
+
+/* ── "Who We Serve" Bordered Grid ────────────────────────────────── */
+.aww-serve {
+    background: #0f0f0f;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.aww-serve-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
-.aww-brand-item {
+
+.aww-serve-item {
+    padding: 5rem 3rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.aww-serve-item:last-child { border-right: none; }
+
+.aww-serve-item:hover {
+    background: rgba(38,166,154,0.04);
+}
+
+.aww-serve-item i {
+    font-size: 2.4rem;
+    color: #26A69A;
+    display: block;
+    margin-bottom: 1.6rem;
+}
+
+.aww-serve-item span {
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: rgba(255,255,255,0.7);
+}
+
+@media (max-width: 800px) {
+    .aww-serve-grid { grid-template-columns: repeat(2, 1fr); }
+    .aww-serve-item:nth-child(2n) { border-right: none; }
+    .aww-serve-item:nth-child(1),
+    .aww-serve-item:nth-child(2) {
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+}
+
+/* ── Stats Row ───────────────────────────────────────────────────── */
+.aww-stats {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    border-right: 1px solid var(--aww-border);
-    border-bottom: 1px solid var(--aww-border);
-    color: var(--aww-text-bright);
+    gap: 6rem;
+    margin-bottom: 6rem;
+    flex-wrap: wrap;
+}
+
+.aww-stat-num {
+    font-family: "Inter", sans-serif;
+    font-size: 4.8rem;
     font-weight: 600;
-    font-size: 18px;
-    letter-spacing: -0.02em;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+    color: #26A69A;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.03em;
 }
-.aww-brand-item:hover {
-    opacity: 1;
+
+.aww-stat-label {
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.4rem;
+    color: rgba(255,255,255,0.5);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
 }
-.aww-brand-item:nth-child(4n) {
-    border-right: none;
+
+/* ── Cards — exact about.html DNA ────────────────────────────────── */
+.aww-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem;
 }
-/* last row items don't need border-bottom if we are clever, but let's just border-bottom them all and let the container seal it or just trust it. */
+
+.aww-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 4rem;
+    border-radius: 4px;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.aww-card:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: #26A69A;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+.aww-card__icon {
+    font-size: 2.8rem;
+    color: #26A69A;
+    display: block;
+    margin-bottom: 2.4rem;
+    opacity: 0.9;
+}
+
+.aww-card__title {
+    font-family: "Inter", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 1.2rem 0;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.aww-card__body {
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.6rem;
+    line-height: 1.75;
+    color: rgba(255,255,255,0.6);
+    margin: 0;
+}
+
+/* Coming Soon chip */
+.aww-chip {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    margin-left: 1rem;
+    vertical-align: middle;
+    font-size: 1rem;
+}
 
 @media (max-width: 768px) {
-    .aww-brand-row {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .aww-brand-item:nth-child(2n) {
-        border-right: none;
-    }
-    .aww-brand-item:nth-child(4n) {
-        border-right: none;
-    }
+    .aww-cards { grid-template-columns: 1fr; }
 }
 
-/* Grid & Cards (Apple/Awwwards style borders) */
-.aww-section {
-    padding: 120px 0;
-    border-bottom: 1px solid var(--aww-border);
-    position: relative;
-    z-index: 1;
-}
-
-.aww-section--intrigue {
-    background-image: url("../images/nano-banner.jpg");
+/* ── Sections with background images ─────────────────────────────── */
+.aww-section--with-bg {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
-.aww-section--intrigue::before {
+.aww-section--with-bg::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(3,3,3,0.9) 0%, rgba(3,3,3,1) 100%);
-    z-index: -1;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15,15,15,0.92) 0%, rgba(15,15,15,0.98) 100%);
+    z-index: 0;
 }
-
-.aww-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-}
-.aww-grid-3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px;
-}
-
-/* Stats */
-.aww-stats {
-    display: flex;
-    gap: 60px;
-    margin-bottom: 60px;
-}
-.aww-stat h4 {
-    font-size: 32px;
-    color: var(--aww-text-bright);
-    font-weight: 500;
-    margin: 0 0 8px 0;
-    letter-spacing: -0.03em;
-}
-.aww-stat p {
-    font-size: 14px;
-    color: var(--aww-text);
-    margin: 0;
-}
-
-@media (max-width: 768px) {
-    .aww-grid-2, .aww-grid-3 { grid-template-columns: 1fr; }
-    .hide-on-mobile { display: none; }
-    .aww-stats { flex-direction: column; gap: 30px; }
-}
-
-/* sleek card */
-.aww-card {
-    background: transparent;
-    border: 1px solid var(--aww-border);
-    border-radius: 12px;
-    padding: 40px;
-    transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+.aww-section--with-bg .aww-inner {
     position: relative;
-    overflow: hidden;
-    display: block;
-    text-decoration: none;
+    z-index: 1;
 }
 
-.aww-card:hover {
-    border-color: rgba(255,255,255,0.15);
-    background: linear-gradient(180deg, rgba(20,20,20,0.4) 0%, rgba(5,5,5,0) 100%);
-    text-decoration: none;
-}
-
-/* Card Icons */
-.aww-card-icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 50%;
-    margin-bottom: 32px;
-    color: var(--aww-text-bright);
-    font-size: 18px;
-    transition: background 0.3s ease;
-}
-
-.aww-card:hover .aww-card-icon {
-    background: rgba(255,255,255,0.05);
-}
-
-.aww-card h3 {
-    color: var(--aww-text-bright);
-    font-size: 22px;
-    font-weight: 500;
-    margin-top: 0;
-    margin-bottom: 12px;
-    letter-spacing: -0.02em;
-}
-
-.aww-card p {
-    color: var(--aww-text);
-    font-size: 15px;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Section Titles */
-.aww-section-title {
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--aww-text-bright);
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    margin-top: 0;
-    margin-bottom: 16px;
-    max-width: 600px;
-}
-
-.aww-section-subtitle {
-    font-size: 16px;
-    color: var(--aww-text);
-    max-width: 600px;
-    margin-top: 0;
-    margin-bottom: 60px;
-    line-height: 1.6;
-}
-
-/* Contact Area */
-.aww-section--contact {
-    background-image: url("../images/hero-two.jpg");
-    background-size: cover;
-    background-position: center bottom;
-}
-.aww-section--contact::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(3,3,3,0.92);
-    z-index: -1;
-}
-
+/* ── Contact Form — premium overhaul ─────────────────────────────── */
 .aww-contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    padding: 100px 0;
+    gap: 8rem;
+    align-items: start;
 }
-@media (max-width: 768px) {
-    .aww-contact { grid-template-columns: 1fr; gap: 40px; }
+
+@media (max-width: 800px) {
+    .aww-contact { grid-template-columns: 1fr; gap: 5rem; }
+}
+
+.aww-contact-info-block h5 {
+    font-family: "Inter", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    color: #26A69A;
+    margin: 0 0 0.8rem 0;
+}
+
+.aww-contact-info-block p {
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.6rem;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 3.6rem 0;
+    line-height: 1.6;
+}
+
+/* Form fields — underline only, same depth as about page form */
+.aww-form-field {
+    margin-bottom: 0.4rem;
 }
 
 .aww-input {
     width: 100%;
+    box-sizing: border-box;
     background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--aww-border);
-    padding: 16px 0;
-    color: var(--aww-text-bright);
-    font-size: 16px;
-    margin-bottom: 24px;
-    transition: border-color 0.3s;
-    font-family: inherit;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 1.6rem 0;
+    color: rgba(255,255,255,0.85);
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 2.4rem;
+    transition: border-color 0.3s ease;
+    display: block;
 }
+
 .aww-input:focus {
     outline: none;
-    border-bottom-color: rgba(255, 255, 255, 0.4);
+    border-bottom-color: #26A69A;
 }
+
 .aww-input::placeholder {
-    color: #444;
+    color: rgba(255,255,255,0.25);
 }
+
 textarea.aww-input {
     resize: vertical;
-    min-height: 100px;
+    min-height: 12rem;
+    margin-bottom: 2.8rem;
 }
 
-.aww-contact-info h5 {
-    color: var(--aww-text-bright);
-    font-size: 16px;
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-.aww-contact-info p {
-    color: var(--aww-text);
-    font-size: 15px;
-    margin-top: 0;
-    margin-bottom: 32px;
-}
-
-.aww-footer {
-    padding: 60px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: #666;
-}
-@media (max-width: 768px) {
-    .aww-footer { flex-direction: column; gap: 20px; text-align: center; }
+/* Submit button — uses the same style as .aww-btn-primary, full-width */
+.aww-form-submit {
+    width: 100%;
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    height: 5.4rem;
+    line-height: 5.4rem;
+    padding: 0 3.2rem;
+    color: #ffffff;
+    background: #26A69A;
+    border: 0.2rem solid #26A69A;
+    cursor: pointer;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    margin-top: 0.8rem;
 }
 
-.aww-footer a {
-    color: #666;
-    text-decoration: none;
-    transition: color 0.3s;
+.aww-form-submit:hover,
+.aww-form-submit:focus {
+    background: #00897B;
+    border-color: #00897B;
+    color: #ffffff;
+    outline: none;
 }
-.aww-footer a:hover {
-    color: var(--aww-text-bright);
+
+.aww-form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
-.aww-socials {
-    display: flex;
-    gap: 16px;
+
+/* Feedback messages */
+.aww-msg-warning,
+.aww-msg-success {
+    display: none;
+    font-family: "IBM Plex Sans", serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    padding: 1.6rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
 }
-.aww-socials a {
-    font-size: 16px;
+
+.aww-msg-warning.is-visible,
+.aww-msg-success.is-visible {
+    display: block;
+}
+
+.aww-msg-warning {
+    color: #ff6163;
+    background: rgba(255,97,99,0.08);
+    border: 1px solid rgba(255,97,99,0.2);
+}
+
+.aww-msg-success {
+    color: #26A69A;
+    background: rgba(38,166,154,0.08);
+    border: 1px solid rgba(38,166,154,0.2);
+}
+
+/* ── Footer override ─────────────────────────────────────────────── */
+footer {
+    background: #0a0a0a;
+    border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ── Mobile hero ─────────────────────────────────────────────────── */
+@media (max-width: 800px) {
+    .aww-hero { background-attachment: scroll; }
+    .aww-section--with-bg { background-attachment: scroll; }
+    .aww-hero__h1 { font-size: clamp(3.5rem, 9vw, 5rem); }
+    .aww-hero__scroll { display: none; }
+    .aww-hero__actions { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 600px) {
+    .aww-section { padding: 7rem 0; }
+    .aww-stats { gap: 3rem; }
 }

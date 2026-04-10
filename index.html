@@ -50,7 +50,6 @@
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
-
     <!-- CSS
     ================================================== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"
@@ -76,281 +75,457 @@
 
 </head>
 
-<body id="top" class="awwwards-theme">
+<body id="top">
 
-    <!-- Header Glassmorphism -->
-    <header class="aww-header" role="banner">
-        <div class="aww-header__inner">
-            <a class="site-logo" href="index.html" aria-label="Debug Lab">
-                <img src="images/logo-white.png" alt="Debug Lab" style="height: 28px;">
+    <!-- header — same pattern as about.html
+    ================================================== -->
+    <header class="s-header" role="banner">
+
+        <div class="header-logo">
+            <a class="site-logo" href="index.html" aria-label="Debug Lab - Go to homepage">
+                <img src="images/logo-white.png" alt="Debug Lab" style="width: 100px; height: auto;">
             </a>
-            
-            <nav class="aww-nav hide-on-mobile" aria-label="Main navigation">
-                <a href="#home">Home</a>
-                <a href="about.html">About</a>
-                <a href="#intrigue">Context</a>
-                <a href="#services">What We Do</a>
-                <a href="#products">Products</a>
-            </nav>
-
-            <div class="aww-header__actions">
-                <a href="#contact" class="aww-btn-pill">Start a conversation</a>
-            </div>
         </div>
-    </header>
 
-    <!-- Hero -->
+        <nav class="header-nav" role="navigation" aria-label="Main navigation">
+
+            <a href="index.html#0" class="header-nav__close" title="close"
+                aria-label="Close navigation menu"><span>Close</span></a>
+
+            <div class="header-nav__content">
+                <h3>Navigation</h3>
+
+                <ul class="header-nav__list">
+                    <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a class="smoothscroll" href="#intrigue">Context</a></li>
+                    <li><a class="smoothscroll" href="#services">What We Do</a></li>
+                    <li><a class="smoothscroll" href="#products">Products</a></li>
+                    <li><a class="smoothscroll" href="#contact">Contact</a></li>
+                </ul>
+
+                <p>Clarity meets engineering. Built for real-world Africa.</p>
+
+                <ul class="header-nav__social" aria-label="Social media links">
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter/X"><i class="fa-brands fa-twitter"
+                                aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"
+                                aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+
+            </div> <!-- end header-nav__content -->
+
+        </nav> <!-- end header-nav -->
+
+        <a class="header-menu-toggle" href="index.html#0" aria-label="Open navigation menu" aria-expanded="false">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+
+    </header> <!-- end s-header -->
+
+
+    <!-- Hero — new aww layout
+    ================================================== -->
     <section id="home" class="aww-hero target-section">
+        <div class="aww-hero__overlay"></div>
         <div class="aww-hero__glow"></div>
-        <div class="aww-container" style="width: 100%;">
-            <div data-animate="fade-up">
-                <div class="aww-badge">Clarity meets engineering</div>
-                <h1 class="aww-h1">We build software systems<br>that work under<br>real conditions.</h1>
-                <p class="aww-hero__desc">
-                    Debug Lab is a software development and digital strategy firm designing reliable, secure, and maintainable systems for African environments — where infrastructure is imperfect and systems must endure.
-                </p>
-                <div class="aww-hero__buttons">
-                    <a href="#contact" class="aww-btn-pill">Start a conversation</a>
-                    <a href="about.html" class="aww-btn-pill aww-btn-pill--dark">See how we think</a>
-                </div>
+
+        <div class="aww-hero__content">
+            <span class="aww-eyebrow">Clarity meets engineering</span>
+
+            <h1 class="aww-hero__h1">
+                We build software<br>
+                systems that work<br>
+                under real conditions.
+            </h1>
+
+            <p class="aww-hero__desc">
+                Debug Lab is a software development and digital strategy firm designing reliable, secure, and
+                maintainable systems for African environments — where infrastructure is imperfect and systems must
+                endure.
+            </p>
+
+            <div class="aww-hero__actions">
+                <a href="#contact" class="aww-btn-primary smoothscroll">Start a conversation</a>
+                <a href="about.html" class="aww-btn-ghost">See how we think</a>
             </div>
         </div>
-    </section>
 
-    <!-- Brands Row -->
-    <div class="aww-brands" id="partners">
-        <div class="aww-brands-header">Partnering with teams operating in African markets</div>
-        <div class="aww-brand-row">
-            <div class="aww-brand-item"><i class="fa fa-cube" style="margin-right: 8px;"></i> Organizations</div>
-            <div class="aww-brand-item"><i class="fa fa-server" style="margin-right: 8px;"></i> Critical Systems</div>
-            <div class="aww-brand-item"><i class="fa fa-rocket" style="margin-right: 8px;"></i> Founders</div>
-            <div class="aww-brand-item"><i class="fa fa-shield" style="margin-right: 8px;"></i> Institutions</div>
+        <div class="aww-hero__scroll">
+            <a href="#intrigue" class="smoothscroll">Scroll</a>
+        </div>
+    </section> <!-- end hero -->
+
+
+    <!-- Who We Serve — bordered grid
+    ================================================== -->
+    <div class="aww-serve" id="partners">
+        <div class="aww-serve-grid">
+            <div class="aww-serve-item">
+                <i class="fa-solid fa-building" aria-hidden="true"></i>
+                <span>Organizations</span>
+            </div>
+            <div class="aww-serve-item">
+                <i class="fa-solid fa-server" aria-hidden="true"></i>
+                <span>Critical Systems</span>
+            </div>
+            <div class="aww-serve-item">
+                <i class="fa-solid fa-rocket" aria-hidden="true"></i>
+                <span>Founders</span>
+            </div>
+            <div class="aww-serve-item">
+                <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+                <span>Institutions</span>
+            </div>
         </div>
     </div>
 
-    <!-- Reality Check / Stats -->
-    <section id="intrigue" class="aww-section aww-section--intrigue target-section">
-        <div class="aww-container">
-            <h2 class="aww-section-title">Most software assumes perfect conditions.<br>Africa doesn’t offer that.</h2>
-            <p class="aww-section-subtitle">
-                Unstable networks. Power interruptions. Growing teams. High expectations with very little margin for failure. Across African markets, systems are expected to keep working — even when the environment doesn’t cooperate.
+
+    <!-- Reality Check
+    ================================================== -->
+    <section id="intrigue" class="aww-section aww-section--with-bg target-section"
+        style="background-image: url('images/nano-banner.jpg');">
+        <div class="aww-inner">
+            <span class="aww-section-tag">Reality Check</span>
+            <h2 class="aww-section-h2">
+                Most software assumes<br>
+                perfect conditions.<br>
+                Africa doesn't offer that.
+            </h2>
+            <p class="aww-section-body">
+                Unstable networks. Power interruptions. Growing teams. High expectations with very little margin for
+                failure. Across African markets, systems are expected to keep working — even when the environment
+                doesn't cooperate.<br><br>
+                Debug Lab exists because <strong style="color: #fff;">reality demands better engineering</strong>.
+                From startups to institutions, we design systems that remain usable under pressure.
             </p>
-            
+
             <div class="aww-stats">
-                <div class="aww-stat">
-                    <h4>0.0%</h4>
-                    <p>Margin for failure</p>
+                <div>
+                    <span class="aww-stat-num">0.0%</span>
+                    <span class="aww-stat-label">Margin for failure</span>
                 </div>
-                <div class="aww-stat">
-                    <h4>100%</h4>
-                    <p>Focus on resilience</p>
+                <div>
+                    <span class="aww-stat-num">100%</span>
+                    <span class="aww-stat-label">Focus on resilience</span>
                 </div>
-                <div class="aww-stat">
-                    <h4>24/7</h4>
-                    <p>Operational reality</p>
+                <div>
+                    <span class="aww-stat-num">24/7</span>
+                    <span class="aww-stat-label">Operational reality</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- What We Do -->
-    <section id="services" class="aww-section target-section">
-        <div class="aww-container">
-            <h2 class="aww-section-title">We engineer for operational pressure.</h2>
-            <p class="aww-section-subtitle">
+
+    <!-- What We Do
+    ================================================== -->
+    <section id="services" class="aww-section target-section" style="background: #0f0f0f;">
+        <div class="aww-inner">
+            <span class="aww-section-tag">What We Do</span>
+            <h2 class="aww-section-h2">We engineer for operational pressure.</h2>
+            <p class="aww-section-body">
                 The result is software that keeps working, scales responsibly, and costs less to maintain over time.
             </p>
 
-            <div class="aww-grid-2">
+            <div class="aww-cards">
                 <a href="#0" class="aww-card">
-                    <div class="aww-card-icon"><i class="fa-solid fa-cube"></i></div>
-                    <h3>Software Development</h3>
-                    <p>We design and build systems that prioritize: resilience over fragility, clarity over cleverness, and longevity over trends. From internal platforms to customer-facing products, our focus is on systems that survive real usage — not ideal scenarios.</p>
+                    <i class="fa-solid fa-cube aww-card__icon" aria-hidden="true"></i>
+                    <h3 class="aww-card__title">Software Development</h3>
+                    <p class="aww-card__body">We design and build systems that prioritize: resilience over fragility,
+                        clarity over cleverness, and longevity over trends. From internal platforms to customer-facing
+                        products, our focus is on systems that survive real usage — not ideal scenarios.</p>
                 </a>
                 <a href="#0" class="aww-card">
-                    <div class="aww-card-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h3>Digital Strategy & Systems Thinking</h3>
-                    <p>Before writing code, we break problems down. We help organizations define system boundaries clearly, align technology with operational reality, and avoid overengineering while planning for growth. Good software starts with disciplined thinking.</p>
+                    <i class="fa-solid fa-layer-group aww-card__icon" aria-hidden="true"></i>
+                    <h3 class="aww-card__title">Digital Strategy &amp; Systems Thinking</h3>
+                    <p class="aww-card__body">Before writing code, we break problems down. We help organizations define
+                        system boundaries clearly, align technology with operational reality, and avoid overengineering
+                        while planning for growth. Good software starts with disciplined thinking.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Platforms -->
-    <section id="products" class="aww-section target-section">
-        <div class="aww-container">
-            <h2 class="aww-section-title">Owned Platforms</h2>
-            <p class="aww-section-subtitle">
-                Products we've built and run. Beyond client engineering, we operate proprietary systems designed to introduce reliability to specific African industries.
+
+    <!-- Owned Platforms
+    ================================================== -->
+    <section id="products" class="aww-section target-section" style="background: #111111;">
+        <div class="aww-inner">
+            <span class="aww-section-tag">Owned Platforms</span>
+            <h2 class="aww-section-h2">Products we've built and run.</h2>
+            <p class="aww-section-body">
+                Beyond client engineering, we operate proprietary systems designed to introduce reliability to specific
+                African industries.
             </p>
 
-            <div class="aww-grid-2">
-                <a href="https://mediadmin.debuglabdigital.com" target="_blank" class="aww-card">
-                    <div class="aww-card-icon"><i class="fa-solid fa-desktop"></i></div>
-                    <h3>Media Admin</h3>
-                    <p>A specialized church administration platform built to solve the "back-door" problem. It tracks attendance, flags at-risk members, and automates care outreach where generic CRMs fail.</p>
+            <div class="aww-cards">
+                <a href="https://mediadmin.debuglabdigital.com" target="_blank" rel="noopener noreferrer"
+                    class="aww-card">
+                    <i class="fa-solid fa-desktop aww-card__icon" aria-hidden="true"></i>
+                    <h3 class="aww-card__title">Media Admin</h3>
+                    <p class="aww-card__body">A specialized church administration platform built to solve the
+                        "back-door" problem. It tracks attendance, flags at-risk members, and automates care outreach
+                        where generic CRMs fail.</p>
                 </a>
-                <a href="#0" class="aww-card" style="cursor: default;">
-                    <div class="aww-card-icon"><i class="fa-solid fa-globe"></i></div>
-                    <h3>SRAMS <span class="aww-badge" style="margin-left: 10px; font-size: 9px;">Coming Soon</span></h3>
-                    <p>School Result Archive and Management System. An operational hub for tracking, managing, and distributing student academic records securely primarily for secondary school and in the future for higher educational institutions.</p>
+                <a href="#0" class="aww-card" style="cursor: default; pointer-events: none;">
+                    <i class="fa-solid fa-globe aww-card__icon" aria-hidden="true"></i>
+                    <h3 class="aww-card__title">
+                        SRAMS <span class="aww-chip">Coming Soon</span>
+                    </h3>
+                    <p class="aww-card__body">School Result Archive and Management System. An operational hub for
+                        tracking, managing, and distributing student academic records securely — primarily for secondary
+                        school and in the future for higher educational institutions.</p>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="aww-section aww-section--contact target-section" style="border-bottom: none;">
-        <div class="aww-container">
+
+    <!-- Contact
+    ================================================== -->
+    <section id="contact" class="aww-section aww-section--with-bg target-section"
+        style="background-image: url('images/hero-two.jpg');">
+        <div class="aww-inner">
+            <span class="aww-section-tag">Contact Us</span>
+            <h2 class="aww-section-h2">Let's build something that lasts.</h2>
+
             <div class="aww-contact">
-                <div>
-                    <h2 class="aww-section-title">Let’s build something that lasts.</h2>
-                    <p class="aww-section-subtitle" style="margin-bottom: 30px;">
-                        If you’re tired of systems that only work in ideal conditions, let’s talk about building one that survives reality.
+                <!-- Left: info -->
+                <div class="aww-contact-info-block">
+                    <p class="aww-section-body" style="margin-bottom: 4rem;">
+                        If you're tired of systems that only work in ideal conditions, let's talk about building one
+                        that survives reality.
                     </p>
-                    <div class="aww-contact-info">
-                        <h5>Where to Find Us</h5>
-                        <p>Ado-Ekiti, Ekiti State, Nigeria<br>Available for projects across Africa & Globally</p>
-                        <h5>Email Us At</h5>
-                        <p>hello@debuglabdigital.com</p>
-                    </div>
+
+                    <h5>Where to Find Us</h5>
+                    <p>Ado-Ekiti, Ekiti State, Nigeria<br>Available for projects across Africa &amp; Globally</p>
+
+                    <h5>Email Us At</h5>
+                    <p>hello@debuglabdigital.com</p>
                 </div>
 
+                <!-- Right: form -->
                 <div>
                     <form name="contactForm" id="contactForm" action="" novalidate>
-                        <input name="contactName" type="text" id="contactName" placeholder="Your Name" value="" minlength="2" required aria-required="true" class="aww-input">
-                        <input name="contactEmail" type="email" id="contactEmail" placeholder="Your Email" value="" required aria-required="true" class="aww-input">
-                        <textarea name="contactDetails" id="contactDetails" placeholder="Project Details" minlength="10" required aria-required="true" class="aww-input"></textarea>
-                        
-                        <div class="message-warning" id="contactWarning" style="color: #ff6163; display: none; margin-bottom: 16px; font-size: 14px; background: rgba(255,97,99,0.1); padding: 12px; border-radius: 8px;"></div>
-                        <div class="message-success" id="contactSuccess" style="color: var(--aww-primary); display: none; margin-bottom: 16px; font-size: 14px; background: rgba(38,166,154,0.1); padding: 12px; border-radius: 8px;"></div>
+                        <div class="aww-form-field">
+                            <input name="contactName" type="text" id="contactName"
+                                placeholder="Your Name" value="" minlength="2"
+                                required aria-required="true" class="aww-input">
+                        </div>
+                        <div class="aww-form-field">
+                            <input name="contactEmail" type="email" id="contactEmail"
+                                placeholder="Your Email" value=""
+                                required aria-required="true" class="aww-input">
+                        </div>
+                        <div class="aww-form-field">
+                            <textarea name="contactDetails" id="contactDetails"
+                                placeholder="Project Details" minlength="10"
+                                required aria-required="true" class="aww-input"></textarea>
+                        </div>
 
-                        <button id="btnSubmit" type="submit" class="aww-btn-pill" style="width: 100%; padding: 16px; margin-top: 16px;">Send message</button>
+                        <div class="aww-msg-warning" id="contactWarning"></div>
+                        <div class="aww-msg-success" id="contactSuccess"></div>
+
+                        <button id="btnSubmit" type="submit" class="aww-form-submit">
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="aww-container">
-        <div class="aww-footer">
-            <div>
-                © <span id="year"></span> Debug Lab Digital Service.<br>
-                Parent company of <a href="https://mediadmin.debuglabdigital.com" target="_blank" style="text-decoration: underline;">Media Admin</a>.
+
+    <!-- Footer
+    ================================================== -->
+    <footer role="contentinfo">
+
+        <div class="row footer-main">
+
+            <div class="col-six tab-full left footer-desc">
+                <div class="footer-logo"></div>
+                <p>Debug Lab turns complexity into clarity — by breaking problems down, engineering resilient systems,
+                    and rebuilding them cleanly for long-term use in real operational environments.</p>
+
+                <p style="margin-top: 1.5rem; font-size: 1.4rem; color: rgba(255,255,255,0.7);">
+                    <strong style="color: #ffffff;">Parent company of</strong>
+                    <a href="https://mediadmin.debuglabdigital.com" target="_blank" rel="noopener noreferrer"
+                        style="color: inherit; text-decoration: underline;">Media Admin</a>
+                </p>
             </div>
-            
-            <div class="aww-socials">
-                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+
+            <div class="col-six tab-full right footer-subscribe">
+                <h4>Get Notified</h4>
+                <p>Join our newsletter to get insights on building resilient software in Africa.</p>
+
+                <div class="subscribe-form">
+                    <form id="mc-form" class="group" novalidate="true" aria-label="Newsletter subscription">
+                        <label for="mc-email" class="visually-hidden">Email Address</label>
+                        <input type="email" value="" name="EMAIL" class="email" id="mc-email"
+                            placeholder="Email Address" required="" aria-required="true">
+                        <input type="submit" name="subscribe" value="Subscribe">
+                        <span class="subscribe-message" aria-live="polite"></span>
+                    </form>
+                </div>
+            </div>
+
+        </div> <!-- end footer-main -->
+
+        <div class="row footer-bottom">
+            <div class="col-twelve">
+                <div class="copyright">
+                    <span>© <span id="year"></span> Debug Lab Digital Service</span>
+                </div>
+                <div class="go-top">
+                    <a class="smoothscroll" title="Back to Top" href="index.html#top" aria-label="Back to top">
+                        <i class="icon-arrow-up" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div> <!-- end footer-bottom -->
+
+    </footer> <!-- end footer -->
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale-pulse-out">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- Scripts -->
+
+    <!-- JavaScript
+    ================================================== -->
     <script src="js/plugins.js"></script>
-    <!-- We bypass main.js for contact but plugins.js keeps Pace & smoothscroll -->
     <script src="js/main.js"></script>
-    
-    <!-- Contact Form & Refined Motion -->
+
+    <!-- Inline: year + contact form + Framer Motion -->
     <script type="module">
         import { animate, inView, stagger } from "https://esm.sh/motion";
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('year').textContent = new Date().getFullYear();
+            // Year
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-            // Form Handler Preserved
+            // ── Contact form — strip any main.js handler, then bind ours ──
             setTimeout(() => {
-                const activeForm = document.getElementById('contactForm');
-                if (!activeForm) return;
+                const orig = document.getElementById('contactForm');
+                if (!orig) return;
 
-                const btn = document.getElementById('btnSubmit');
+                const fresh = orig.cloneNode(true);
+                orig.parentNode.replaceChild(fresh, orig);
+
+                const form    = document.getElementById('contactForm');
+                const btn     = document.getElementById('btnSubmit');
                 const warning = document.getElementById('contactWarning');
                 const success = document.getElementById('contactSuccess');
 
-                // Remove legacy main.js submit handlers if bound
-                const newForm = activeForm.cloneNode(true);
-                activeForm.parentNode.replaceChild(newForm, activeForm);
-                const replacedForm = document.getElementById('contactForm');
-
-                replacedForm.addEventListener('submit', async (e) => {
+                form.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    success.style.display = 'none';
-                    warning.style.display = 'none';
+                    warning.classList.remove('is-visible');
+                    success.classList.remove('is-visible');
 
-                    if (!replacedForm.checkValidity()) {
-                        replacedForm.reportValidity();
-                        return;
-                    }
+                    if (!form.checkValidity()) { form.reportValidity(); return; }
 
                     btn.disabled = true;
-                    btn.textContent = 'Sending...';
+                    btn.textContent = 'Sending…';
+                    const pulse = animate(btn, { opacity: [1, 0.4, 1] },
+                        { duration: 1.2, repeat: Infinity, easing: 'ease-in-out' });
 
                     try {
-                        const formData = new FormData(replacedForm);
-                        const jsonPayload = Object.fromEntries(formData.entries());
-                        const devMode = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
-                        const API_URL = devMode 
+                        const payload = Object.fromEntries(new FormData(form).entries());
+                        const dev = ['localhost','127.0.0.1'].includes(location.hostname)
+                                 || location.protocol === 'file:';
+                        const API = dev
                             ? 'http://127.0.0.1:8000/api/contact-lead'
                             : 'https://mediadmin.debuglabdigital.com/api/contact-lead';
-                        
-                        const response = await fetch(API_URL, {
+
+                        const res  = await fetch(API, {
                             method: 'POST',
-                            body: JSON.stringify(jsonPayload),
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json'
-                            }
+                            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
                         });
 
-                        if (!response.ok) throw new Error('Unreachable Backend');
-                        const data = await response.json();
-                        
+                        if (!res.ok) throw new Error('Backend unreachable');
+                        const data = await res.json();
+
                         if (data.status === 'success') {
-                            success.textContent = data.message || "Lead securely captured for operational follow-up.";
-                            success.style.display = 'block';
-                            replacedForm.reset();
+                            success.textContent = data.message || 'Lead captured — we'll be in touch.';
+                            success.classList.add('is-visible');
+                            form.reset();
                         } else {
-                            warning.textContent = data.message || "Validation Error.";
-                            warning.style.display = 'block';
+                            warning.textContent = data.message || 'Validation error.';
+                            warning.classList.add('is-visible');
                         }
-                    } catch (error) {
-                        warning.innerHTML = "<strong>Operational Pressure:</strong> Backend is unreachable. Please email us directly.";
-                        warning.style.display = 'block';
+                    } catch {
+                        warning.innerHTML = '<strong>Operational Pressure:</strong> Backend is currently unreachable. Please email us directly.';
+                        warning.classList.add('is-visible');
                     } finally {
+                        pulse.stop();
+                        animate(btn, { opacity: 1 }, { duration: 0.3 });
                         btn.disabled = false;
-                        btn.textContent = 'Send message';
+                        btn.textContent = 'Send Message';
                     }
                 });
             }, 500);
 
-            // Framer Motion Refinements
+            // ── Framer Motion scroll reveals ──
             setTimeout(() => {
-                const elements = document.querySelectorAll('.aww-card, .aww-stat, .aww-brand-item');
-                elements.forEach(el => {
-                    el.style.opacity = "0";
-                    el.style.transform = "translateY(30px)";
-                });
+                // Hero items stagger in on load
+                const heroEls = document.querySelectorAll('.aww-eyebrow, .aww-hero__h1, .aww-hero__desc, .aww-hero__actions > *');
+                heroEls.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; });
+                setTimeout(() => {
+                    animate(heroEls, { opacity: [0,1], y: [24,0] },
+                        { delay: stagger(0.12), duration: 0.8, easing: 'ease-out' });
+                }, 150);
 
-                document.querySelectorAll('.aww-section, .aww-brands').forEach(section => {
-                    const items = section.querySelectorAll('.aww-card, .aww-stat, .aww-brand-item');
-                    if (items.length > 0) {
-                        inView(section, () => {
-                            animate(items, { opacity: [0, 1], y: [30, 0] }, { delay: stagger(0.1), duration: 0.8, easing: "easeOut" });
-                        }, { margin: "-50px" });
+                // Serve items
+                const serveItems = document.querySelectorAll('.aww-serve-item');
+                serveItems.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; });
+                inView('.aww-serve', () => {
+                    animate(serveItems, { opacity:[0,1], y:[20,0] },
+                        { delay: stagger(0.08), duration: 0.6, easing: 'ease-out' });
+                }, { margin: '-60px' });
+
+                // Cards
+                const cards = document.querySelectorAll('.aww-card');
+                cards.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(32px)'; });
+                document.querySelectorAll('#services, #products').forEach(sec => {
+                    const secCards = sec.querySelectorAll('.aww-card');
+                    if (secCards.length) {
+                        inView(sec, () => {
+                            animate(secCards, { opacity:[0,1], y:[32,0] },
+                                { delay: stagger(0.12), duration: 0.8, easing: 'ease-out' });
+                        }, { margin: '-60px' });
                     }
                 });
 
-                // Hero reveal
-                const heroItems = document.querySelectorAll('.aww-badge, .aww-h1, .aww-hero__desc, .aww-hero__buttons > *');
-                heroItems.forEach(el => { el.style.opacity = "0"; el.style.transform = "translateY(20px)"; });
-                setTimeout(() => {
-                     animate(heroItems, { opacity: [0, 1], y: [20, 0] }, { delay: stagger(0.1), duration: 0.8, easing: "easeOut" });
-                }, 100);
-
+                // Stats
+                const stats = document.querySelectorAll('.aww-stat-num');
+                stats.forEach(el => { el.style.opacity = '0'; });
+                inView('#intrigue', () => {
+                    animate(stats, { opacity:[0,1] },
+                        { delay: stagger(0.15), duration: 0.8, easing: 'ease-out' });
+                }, { margin: '-60px' });
             }, 200);
         });
     </script>
+
 </body>
 
 </html>

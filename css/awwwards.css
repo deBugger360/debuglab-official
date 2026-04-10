@@ -914,7 +914,102 @@ footer {
     color: var(--text);
 }
 
-/* ── Miscellaneous Utilities ──────────────────────────────────────── */
+/* ── About CTA (Contact Section) ──────────────────────────────────── */
+.aww-about-cta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+}
+
+.aww-about-cta__left .aww-tag { margin-bottom: 1.6rem; }
+
+.aww-about-cta__left .aww-h2 {
+    font-size: clamp(3.6rem, 5vw, 5rem);
+    margin-bottom: 2rem;
+}
+
+.aww-about-cta__left .aww-lead {
+    font-size: 1.8rem;
+    margin-bottom: 3.6rem;
+}
+
+.aww-about-cta__right {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    padding: 5rem;
+    border-radius: 12px;
+}
+
+.aww-cta-detail {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border-hi);
+}
+.aww-cta-detail:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.aww-cta-detail h5 {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18rem;
+    color: var(--teal);
+    margin: 0 0 1rem 0;
+}
+
+.aww-cta-detail p,
+.aww-cta-detail a {
+    font-family: var(--font-serif);
+    font-size: 1.55rem;
+    color: var(--text-hi);
+    line-height: 1.6;
+    text-decoration: none;
+    margin: 0;
+}
+
+.aww-cta-detail a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+.aww-cta-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.aww-cta-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--teal);
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.aww-cta-links a i {
+    font-size: 1rem;
+    transition: transform var(--ease-out) 0.25s;
+}
+
+.aww-cta-links a:hover {
+    color: var(--white);
+    text-decoration: none;
+}
+.aww-cta-links a:hover i {
+    transform: translate(3px, -3px);
+}
+
+/* ── Miscellaneous Utilities & Mobile Regressions ─────────────────── */
 .aww-section--dark  { background: var(--bg-1); }
 .aww-section--dark2 { background: var(--bg-2); }
 
@@ -924,6 +1019,12 @@ footer {
     .aww-bg-section { background-attachment: scroll; }
     .aww-manifesto { padding: 10rem 0; }
     .aww-philosophy { padding: 10rem 0; }
+    .aww-about-cta { grid-template-columns: 1fr; gap: 5rem; }
+    .aww-about-cta__right { padding: 3rem; }
+    
+    .v1-hero__ctas { flex-direction: column; align-items: stretch; width: 100%; }
+    .v1-hero__ctas .aww-btn, 
+    .v1-hero__ctas .aww-btn-ghost { width: 100%; justify-content: center; text-align: center; }
 }
 
 @media (max-width: 600px) {

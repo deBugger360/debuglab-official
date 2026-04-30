@@ -1843,6 +1843,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     top: 50%;
     right: 5.4rem;
     transform: translate3d(0, -50%, 0);
+    z-index: 5;
 }
 
 .home-social a {
@@ -3593,5 +3594,32 @@ footer .row {
     }
 }
 
+
+
+/* ------------------------------------------------------------------- 
+ * ## footer social list
+ * ------------------------------------------------------------------- */
+.footer-social-list {
+    list-style: none;
+    margin: 2.4rem 0 0 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-social-list li {
+    display: inline-block;
+    padding: 0;
+}
+
+.footer-social-list li a {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer-social-list li a:hover {
+    color: var(--color-primary);
+}
 
 /*# sourceMappingURL=main.css.map */
